@@ -43,7 +43,7 @@ do
           PYTHONPATH=$SRC_DIR python3 -u $SRC_DIR/main_incremental.py --exp-name no_gs_grow_${SEED} \
                  --datasets cifar100_icarl --num-tasks 10 --network resnet32 --seed $SEED \
                  --nepochs 200 --batch-size 128 --results-path $RESULTS_DIR \
-                 --approach $1 --gpu $2 --lr 0.1 --lr-min 1e-5 --lr-factor 3 --momentum 0.9 \ 
+                 --approach $1 --gpu $2 --lr 0.1 --lr-min 1e-5 --lr-factor 3 --momentum 0.9 \
                  --weight-decay 0.0002 --lr-patience 15 \
                  --num-exemplars-per-class 20 --exemplar-selection herding
   else
