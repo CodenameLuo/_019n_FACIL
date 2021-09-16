@@ -111,7 +111,7 @@ class HerdingExemplarsSelector(ExemplarsSelector):
             # get all indices from current class
             cls_ind = np.where(extracted_targets == curr_cls)[0]
             assert (len(cls_ind) > 0), "No samples to choose from for class {:d}".format(curr_cls)
-            assert (exemplars_per_class <= len(cls_ind)), "Not enough samples to store"
+            # assert (exemplars_per_class <= len(cls_ind)), "Not enough samples to store"
             # get all extracted features for current class
             cls_feats = extracted_features[cls_ind]
             # calculate the mean
@@ -119,7 +119,11 @@ class HerdingExemplarsSelector(ExemplarsSelector):
             # select the exemplars closer to the mean of each class
             selected = []
             selected_feat = []
-            for k in range(exemplars_per_class):
+            if exemplars_per_class <= len(cls_ind):
+                num_of_exemplars = exemplars_per_class
+            else:
+                num_of_exemplars = len(cls_ind)
+            for k in range(num_of_exemplars):
                 # fix this to the dimension of the model features
                 sum_others = torch.zeros(cls_feats.shape[1])
                 for j in selected_feat:
