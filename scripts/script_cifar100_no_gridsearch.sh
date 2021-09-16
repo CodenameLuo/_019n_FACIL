@@ -15,8 +15,8 @@ PROJECT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && cd .. &
 SRC_DIR="$PROJECT_DIR/src"
 echo "Project dir: $PROJECT_DIR"
 echo "Sources dir: $SRC_DIR"
-
 RESULTS_DIR="$PROJECT_DIR/results"
+
 if [ "$4" != "" ]; then
     RESULTS_DIR=$4
 else
@@ -46,6 +46,13 @@ do
                  --approach $1 --gpu $2 --lr 0.1 --lr-min 1e-5 --lr-factor 3 --momentum 0.9 \
                  --weight-decay 0.0002 --lr-patience 15 \
                  --num-exemplars-per-class 20 --exemplar-selection herding
+  elif [ "$3" = "fixdlt" ]; then
+          PYTHONPATH=$SRC_DIR python3 -u $SRC_DIR/main_incremental.py --exp-name no_gs_fixd_${SEED} \
+                 --datasets cifar100lt --num-tasks 10 --network resnet32 --seed $SEED \
+                 --nepochs 200 --batch-size 128 --results-path "$PROJECT_DIR/ltresults" \
+                 --approach $1 --gpu $2 --lr 0.1 --lr-min 1e-5 --lr-factor 3 --momentum 0.9 \
+                 --weight-decay 0.0002 --lr-patience 15 \
+                 --num-exemplars 2000 --exemplar-selection herding
   else
           echo "No scenario provided."
   fi
