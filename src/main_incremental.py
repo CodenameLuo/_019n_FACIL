@@ -23,8 +23,12 @@ def main(argv=None):
     # miscellaneous args
     parser.add_argument('--gpu', type=int, default=0,
                         help='GPU (default=%(default)s)')
-    parser.add_argument('--results-path', type=str, default='../results',
+    # parser.add_argument('--results-path', type=str, default='../results',
+    #                     help='Results path (default=%(default)s)')
+
+    parser.add_argument('--results-path', type=str, default='./results',
                         help='Results path (default=%(default)s)')
+
     parser.add_argument('--exp-name', default=None, type=str,
                         help='Experiment name (default=%(default)s)')
     parser.add_argument('--seed', type=int, default=0,
