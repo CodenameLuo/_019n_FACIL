@@ -12,14 +12,19 @@
             "module": "main_incremental",
             "args": [
                 "--exp-name", "my_test",
-                "--gpu", "0",
+                "--gpu", "3",
                 "--approach", "finetuning",
                 "--datasets", "cifar100",
                 "--num-tasks", "4",
-                "--nepochs", "200",
+                "--nepochs", "3",
                 "--network", "resnet32",
                 "--batch-size", "64",
                 "--lr", "0.1",
+
+                "--pin-memory", "true",
+                "--save-models",
+                "--stop-at-task", "0",
+
             ],
             // "justMyCode": false,
             "justMyCode": true,
