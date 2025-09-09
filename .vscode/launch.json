@@ -1,0 +1,29 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "module",
+            "type": "debugpy",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src",
+            "module": "main_incremental",
+            "args": [
+                "--exp-name", "my_test",
+                "--gpu", "0",
+                "--approach", "finetuning",
+                "--datasets", "cifar100",
+                "--num-tasks", "4",
+                "--nepochs", "200",
+                "--network", "resnet32",
+                "--batch-size", "64",
+                "--lr", "0.1",
+            ],
+            // "justMyCode": false,
+            "justMyCode": true,
+            "console": "integratedTerminal"
+        },
+    ]
+}
